@@ -78,6 +78,19 @@ export const constantRoutes = [
   },
 
   {
+    path: '/custom',
+    component: Layout,
+    children: [
+      {
+        path: 'CustomInstruction',
+        name: 'CustomInstruction',
+        component: () => import('@/views/customInstruction/index.vue'),
+        meta: { title: 'CustomInstruction', icon: 'dashboard' }
+      }
+    ]
+  },
+
+  {
     path: '/form',
     component: Layout,
     children: [

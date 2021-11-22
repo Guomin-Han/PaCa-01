@@ -6,6 +6,20 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/en' // lang i18n
 
+Vue.directive('anti-shake', {
+  inserted: function(el, binding) {
+    let timer = null
+    if (binding.arg === 'none') {
+      el.addEventListener('keypress', () => {
+        if (timer) clearTimeout(timer)
+        timer = setTimeout(() => {
+          binding.value()
+        }, 1000)
+      })
+    }
+  }
+})
+
 import '@/styles/index.scss' // global css
 
 import App from './App'
